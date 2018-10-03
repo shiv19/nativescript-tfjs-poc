@@ -1,0 +1,77 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:chart="nativescript-ui-chart"
+    navigatingTo="onNavigatingTo" class="page">
+
+    <Page.actionBar>
+        <ActionBar title="TensorFlow JS in NativeScript" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+
+    <ScrollView>
+        <StackLayout class="p-20">
+            <Label textWrap="true" class="text-center h3" text="Check the log for result of example 1" />
+            <Button class="btn btn-primary" text="Tap the example 1" tap="sampleOne" />
+            
+            <Label class="hr-light m-5" />
+            
+            <Label textWrap="true" class="text-center h3" text="Check the graph for result of example 2" />
+            <Button class="btn btn-primary" text="Try the example 2" tap="sampleTwo" />
+            
+            <Label class="hr-light m-5" />
+            
+            <Label class="h3" text="True Coefficients: "/>
+            <Label class="h3" text="{{ trueCoefficients }}"/>
+            <StackLayout height="500">
+                <chart:RadCartesianChart height="500">
+                    <chart:RadCartesianChart.horizontalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.horizontalAxis>
+                    <chart:RadCartesianChart.verticalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.verticalAxis>
+                    <chart:RadCartesianChart.series>
+                        <chart:ScatterSeries  items="{{ originalData }}" xProperty="x" yProperty="y"/>            
+                    </chart:RadCartesianChart.series>
+                </chart:RadCartesianChart>
+            </StackLayout>
+
+            <Label class="hr-light m-5" />
+
+            <Label class="h3" text="Random Coefficients: "/>
+            <Label class="h3" text="{{ randomCoefficients }}"/>
+            <StackLayout height="500">
+                <chart:RadCartesianChart height="500">
+                    <chart:RadCartesianChart.horizontalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.horizontalAxis>
+                    <chart:RadCartesianChart.verticalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.verticalAxis>
+                    <chart:RadCartesianChart.series>
+                        <chart:ScatterSeries items="{{ predictionBefore }}" xProperty="x" yProperty="y"/>
+                        <chart:ScatterSeries items="{{ predictionBefore }}" xProperty="x" yProperty="pred"/>
+                    </chart:RadCartesianChart.series>
+                </chart:RadCartesianChart>
+            </StackLayout>
+
+            <Label class="hr-light m-5" />
+
+            <Label class="h3" text="Final Coefficients: "/>
+            <Label class="h3" text="{{ finalCoefficients }}"/>
+            <StackLayout height="500">
+                <chart:RadCartesianChart height="500">
+                    <chart:RadCartesianChart.horizontalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.horizontalAxis>
+                    <chart:RadCartesianChart.verticalAxis>
+                        <chart:LinearAxis/>
+                    </chart:RadCartesianChart.verticalAxis>
+                    <chart:RadCartesianChart.series>
+                        <chart:ScatterSeries items="{{ predictionAfter }}" xProperty="x" yProperty="y"/>
+                        <chart:ScatterSeries items="{{ predictionAfter }}" xProperty="x" yProperty="pred"/>
+                    </chart:RadCartesianChart.series>
+                </chart:RadCartesianChart>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
